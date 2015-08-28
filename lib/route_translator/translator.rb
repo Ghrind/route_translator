@@ -126,7 +126,7 @@ module RouteTranslator
 
     def self.translate_string(str, locale)
       locale = "#{locale}".gsub('native_', '')
-      opts = {:scope => :routes, :locale => locale}
+      opts = { scope: RouteTranslator.config.translations_scope, locale: locale }
       if RouteTranslator.config.disable_fallback && locale.to_s != I18n.default_locale.to_s
         opts[:fallback] = true
       else
